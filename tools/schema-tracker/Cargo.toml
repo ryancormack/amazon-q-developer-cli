@@ -1,0 +1,32 @@
+[package]
+name = "schema-tracker"
+version = "0.1.0"
+edition = "2021"
+
+# Exclude from workspace to avoid conflicts
+[workspace]
+
+[[bin]]
+name = "schema-tracker"
+path = "src/main.rs"
+
+[dependencies]
+# Core dependencies
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+schemars = { version = "1.0", features = ["chrono04"] }
+clap = { version = "4.0", features = ["derive"] }
+eyre = "0.6"
+chrono = { version = "0.4", features = ["serde"] }
+
+# File system and path handling
+walkdir = "2.3"
+glob = "0.3"
+
+# Diff and comparison
+similar = "2.2"
+sha2 = "0.10"
+hex = "0.4"
+
+# For loading the actual ConversationState
+chat_cli = { path = "../../crates/chat-cli" }
